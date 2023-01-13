@@ -1,8 +1,15 @@
 const express = require('express')
 const app =  express()
+const morgan = require ('morgan')
 
 // bring in routes
-const { getPosts } = require("./routes/post")
+const { getPosts } = require("./routes/post");
+
+
+
+// middleware
+app.use(morgan("dev"));
+
 
 
 app.get("/", getPosts);
