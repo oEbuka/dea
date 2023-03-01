@@ -1,7 +1,7 @@
 const User = require("../models/user");
 require("dotenv").config();
 const jwt =  require("jsonwebtoken");
-const expressJwt = require('express-jwt');
+const { expressJwt } = require('express-jwt');
 
 
 
@@ -53,4 +53,4 @@ exports.requireSignin = expressJwt({
     //in an auth key to the request object
     secret : process.env.JWT_SECRET,
     userProperty: "auth"
-})
+});
