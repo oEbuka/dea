@@ -1,8 +1,8 @@
 const User = require("../models/user");
 require("dotenv").config();
 const jwt =  require("jsonwebtoken");
-const { expressJwt } = require('express-jwt');
-
+var { expressjwt: expressJwt } = require("express-jwt");
+//const { expressjwt: jwt } = require("express-jwt"); this is the solution that has worked for most but as you can see above ive already assigned jwt to jsonwebtoken
 
 
 exports.signup = async  (req, res) =>{
@@ -51,6 +51,7 @@ exports.signout = (req, res) => {
 exports.requireSignin = expressJwt({
     // if the token is valid , express jwt appends the verified users id
     //in an auth key to the request object
+    algorithms: ['HS256'],
     secret : process.env.JWT_SECRET,
     userProperty: "auth"
 });
