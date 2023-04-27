@@ -41,7 +41,7 @@ exports.getUser = (req, res) => {
 
 exports.updateUser = (req, res, next) => {
     let user = req.profile;
-    user = _.extend(user, req.boy); // extend - mutate the source object
+    user = _.extend(user, req.body); // extend - mutate the source object
     user.updated = Date.now();
     user.save((err) => {
         if (err) {
